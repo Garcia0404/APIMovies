@@ -1,0 +1,26 @@
+{
+  "name": "thestrokes-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:sqlite": "node server-with-sql.js --watch",
+    "start":"node server-local.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "movies",
+    "db"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Movies Api",
+  "dependencies": {
+    "@libsql/client": "^0.6.2",
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "express": "4.19.2",
+    "zod": "^3.23.8"
+  }
+}

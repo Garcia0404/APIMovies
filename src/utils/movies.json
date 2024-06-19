@@ -1,0 +1,211 @@
+[
+  {
+    "id": "8d3a9b7d-04e6-4f29-89b8-8de2327f37d4",
+    "title": "Inception",
+    "year": 2010,
+    "genres": ["Sci-Fi", "Action", "Thriller"],
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology.",
+    "director": "Christopher Nolan",
+    "cast": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
+    "duration": 148,
+    "image": "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
+  },
+  {
+    "id": "fe818cd3-a266-4f36-a674-93349f0a4c2f",
+    "title": "The Dark Knight",
+    "year": 2008,
+    "genres": ["Action", "Crime", "Drama"],
+    "description": "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
+    "director": "Christopher Nolan",
+    "cast": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+    "duration": 152,
+    "image": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+  },
+  {
+    "id": "1199ffc0-1256-4184-979b-8df5cb96a654",
+    "title": "Interstellar",
+    "year": 2014,
+    "genres": ["Adventure", "Sci-Fi", "Drama"],
+    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "director": "Christopher Nolan",
+    "cast": ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
+    "duration": 169,
+    "image": "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/nrSaXF39nDfAAeLKksRCyvSzI2a.jpg"
+  },
+  {
+    "id": "ba5e54e8-2218-4c70-be30-d41af35d8629",
+    "title": "The Matrix",
+    "year": 1999,
+    "genres": ["Sci-Fi", "Action", "Thriller"],
+    "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "director": "Lana Wachowski, Lilly Wachowski",
+    "cast": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
+    "duration": 136,
+    "image": "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"
+  },
+  {
+    "id": "e39793d9-8795-4fa4-bdd2-edc3d2fb09d8",
+    "title": "Pulp Fiction",
+    "year": 1994,
+    "genres": ["Crime", "Drama", "Thriller"],
+    "description": "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+    "director": "Quentin Tarantino",
+    "cast": ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
+    "duration": 154,
+    "image": "https://image.tmdb.org/t/p/w500/fIE3lAGcZDV1G6XM5KmuWnNsPp1.jpg"
+  },
+  {
+    "id": "b7ec8e9b-6fa6-49c7-bb07-9583117c0e7e",
+    "title": "Fight Club",
+    "year": 1999,
+    "genres": ["Drama", "Thriller", "Mystery"],
+    "description": "An insomniac office worker and a devil-may-care soap maker form an underground fight club.",
+    "director": "David Fincher",
+    "cast": ["Brad Pitt", "Edward Norton", "Meat Loaf"],
+    "duration": 139,
+    "image": "https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg"
+  },
+  {
+    "id": "658e7d48-fcf7-4731-a9a9-7ae8e5b1fc2d",
+    "title": "Forrest Gump",
+    "year": 1994,
+    "genres": ["Drama", "Romance", "Comedy"],
+    "description": "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold from the perspective of an Alabama man.",
+    "director": "Robert Zemeckis",
+    "cast": ["Tom Hanks", "Robin Wright", "Gary Sinise"],
+    "duration": 142,
+    "image": "https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg"
+  },
+  {
+    "id": "45293a01-ff42-489a-9de2-359211a88731",
+    "title": "The Shawshank Redemption",
+    "year": 1994,
+    "genres": ["Drama", "Crime"],
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "director": "Frank Darabont",
+    "cast": ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
+    "duration": 142,
+    "image": "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"
+  },
+  {
+    "id": "d7813967-8196-4589-b049-a1f3ee1ddfe8",
+    "title": "The Godfather",
+    "year": 1972,
+    "genres": ["Crime", "Drama"],
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "director": "Francis Ford Coppola",
+    "cast": ["Marlon Brando", "Al Pacino", "James Caan"],
+    "duration": 175,
+    "image": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+  },
+  {
+    "id": "63c83eec-7b54-4cd6-9cc7-cfe120e5fdff",
+    "title": "The Godfather: Part II",
+    "year": 1974,
+    "genres": ["Crime", "Drama"],
+    "description": "The early life and career of Vito Corleone in 1920s New York City is portrayed while his son, Michael, expands and tightens his grip on his crime syndicate.",
+    "director": "Francis Ford Coppola",
+    "cast": ["Al Pacino", "Robert De Niro", "Robert Duvall"],
+    "duration": 202,
+    "image": "https://image.tmdb.org/t/p/w500/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg"
+  },
+  {
+    "id": "6397e210-4c58-42d7-97f7-a7d2fd55da3f",
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "year": 2001,
+    "genres": ["Fantasy", "Adventure"],
+    "description": "A meek Hobbit and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth.",
+    "director": "Peter Jackson",
+    "cast": ["Elijah Wood", "Ian McKellen", "Orlando Bloom"],
+    "duration": 178,
+    "image": "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg"
+  },
+  {
+    "id": "465a08bc-4c46-44fa-9b61-4224a7790597",
+    "title": "The Lord of the Rings: The Two Towers",
+    "year": 2002,
+    "genres": ["Fantasy", "Adventure"],
+    "description": "While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman.",
+    "director": "Peter Jackson",
+    "cast": ["Elijah Wood", "Ian McKellen", "Viggo Mortensen"],
+    "duration": 179,
+    "image": "https://image.tmdb.org/t/p/w500/rrGlNlzFTrXFNGXsD7NNlxq4BPb.jpg"
+  },
+  {
+    "id": "38cf690e-4ba7-4ee5-852f-043ff538025f",
+    "title": "The Lord of the Rings: The Return of the King",
+    "year": 2003,
+    "genres": ["Fantasy", "Adventure"],
+    "description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+    "director": "Peter Jackson",
+    "cast": ["Elijah Wood", "Ian McKellen", "Viggo Mortensen"],
+    "duration": 201,
+    "image": "https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg"
+  },
+  {
+    "id": "79083aa6-1522-4268-b0ed-8299c57bf990",
+    "title": "Star Wars: Episode IV - A New Hope",
+    "year": 1977,
+    "genres": ["Sci-Fi", "Adventure", "Fantasy"],
+    "description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station.",
+    "director": "George Lucas",
+    "cast": ["Mark Hamill", "Harrison Ford", "Carrie Fisher"],
+    "duration": 121,
+    "image": "https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg"
+  },
+  {
+    "id": "0224e45c-046a-406d-a315-6b338515afce",
+    "title": "Star Wars: Episode V - The Empire Strikes Back",
+    "year": 1980,
+    "genres": ["Sci-Fi", "Adventure", "Fantasy"],
+    "description": "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda.",
+    "director": "Irvin Kershner",
+    "cast": ["Mark Hamill", "Harrison Ford", "Carrie Fisher"],
+    "duration": 124,
+    "image": "https://image.tmdb.org/t/p/w500/2l05cFWJacyIsTpsqSgH0wQXe4V.jpg"
+  },
+  {
+    "id": "5f2c7133-8dbd-4018-98f9-6166b48892a2",
+    "title": "Star Wars: Episode VI - Return of the Jedi",
+    "year": 1983,
+    "genres": ["Sci-Fi", "Adventure", "Fantasy"],
+    "description": "After a daring mission to rescue Han Solo from Jabba the Hutt, the Rebels dispatch to Endor to destroy the second Death Star.",
+    "director": "Richard Marquand",
+    "cast": ["Mark Hamill", "Harrison Ford", "Carrie Fisher"],
+    "duration": 131,
+    "image": "https://image.tmdb.org/t/p/w500/mDCBQNhR6R0PVFucJl0O4Hp5klZ.jpg"
+  },
+  {
+    "id": "372d8429-06de-423e-85fa-b30d18c97c99",
+    "title": "Gladiator",
+    "year": 2000,
+    "genres": ["Action", "Drama", "Adventure"],
+    "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    "director": "Ridley Scott",
+    "cast": ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
+    "duration": 155,
+    "image": "https://image.tmdb.org/t/p/w500/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg"
+  },
+  {
+    "id": "874cad0d-b7b5-4e84-80f5-ddd121c18d9b",
+    "title": "Saving Private Ryan",
+    "year": 1998,
+    "genres": ["War", "Drama", "Action"],
+    "description": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
+    "director": "Steven Spielberg",
+    "cast": ["Tom Hanks", "Matt Damon", "Tom Sizemore"],
+    "duration": 169,
+    "image": "https://media.themoviedb.org/t/p/w300_and_h450_bestv2/dcKfD8xWf8XnS3tHVp7v331wdNT.jpg"
+  },
+  {
+    "id": "e1502ffd-2a3d-406f-90e2-e2002f66a73f",
+    "title": "Schindler's List",
+    "year": 1993,
+    "genres": ["Biography", "Drama", "History"],
+    "description": "In German-occupied Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+    "director": "Steven Spielberg",
+    "cast": ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
+    "duration": 195,
+    "image": "https://image.tmdb.org/t/p/w500/c8Ass7acuOe4za6DhSattE359gr.jpg"
+  }
+]
