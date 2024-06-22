@@ -1,44 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgNDggNDgiPjxkZWZzPjxtYXNrIGlkPSJpcFNNb3ZpZTAiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iNCI+PHBhdGggZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMjQgNDRjMTEuMDQ2IDAgMjAtOC45NTQgMjAtMjBTMzUuMDQ2IDQgMjQgNFM0IDEyLjk1NCA0IDI0czguOTU0IDIwIDIwIDIwWiIvPjxwYXRoIGZpbGw9IiMwMDAiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTI0IDE4YTMgMyAwIDEgMCAwLTZhMyAzIDAgMCAwIDAgNlptMCAxOGEzIDMgMCAxIDAgMC02YTMgMyAwIDAgMCAwIDZabS05LTlhMyAzIDAgMSAwIDAtNmEzIDMgMCAwIDAgMCA2Wm0xOCAwYTMgMyAwIDEgMCAwLTZhMyAzIDAgMCAwIDAgNloiLz48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZD0iTTI0IDQ0aDIwIi8+PC9nPjwvbWFzaz48L2RlZnM+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMCAwaDQ4djQ4SDB6IiBtYXNrPSJ1cmwoI2lwU01vdmllMCkiLz48L3N2Zz4=">
   <title>The Movies Hub API</title>
   <style>
     :root {
-      color-scheme: light dark;
       --main-bg: #FF9000;
       --gray-main: #121212;
-      --mobile:350px;
-      --mobileLg:450px;
+      --gray-secondary: #202329;
+      --mobile: 350px;
+      --mobileLg: 450px;
       --tablet: 900px;
       --laptop: 1100px;
     }
-    /* Mobile */
-    @media (width<=600px) {
-      h1{
-        font-size: 40px;
+    @media (width<350px) {
+      .main_text-title{
+        flex-direction: column;
       }
-      main{
-        .api{
-          font-size: 40px;
+    }
+    @media (width<420px) {
+      .main_text-title{
+        h1,.api{
+            font-size: 32px;
         }
       }
     }
-    @media (width>600px) {
-      h1{
+    @media (width<420px) and (width>=350px){
+      .main_text-title{
+          font-size: 10px;
+        }
+    }
+    @media (width<620px) {
+      .main_text {
+        flex-direction: column;
+        gap: 20px;
+        div {
+          margin-right: auto;
+        }
+
+        .btn {
+          margin-right: auto;
+        }
+      }
+    }
+
+    @media (width>=620px) {
+      main {
+        .main_text {
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+
+    @media (width<=750px) and (width>=420px){
+      h1,.api {
+        font-size: 40px;
+      }
+    }
+
+    @media (width>750px) {
+      h1 {
         font-size: 52px;
       }
-      main{
-        span{
+
+      main {
+        span {
           font-size: 20px;
         }
-        .api{
+
+        .api {
           font-size: 52px;
         }
       }
     }
+
     * {
       margin: 0;
       padding: 0;
@@ -48,9 +86,11 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    .grid{
+
+    .grid {
       display: grid;
     }
+
     .flex {
       display: flex;
     }
@@ -78,10 +118,24 @@
     .h-full {
       height: 100%;
     }
-    #loader{
+
+    #loader {
       height: 100vh;
       width: 100%;
     }
+
+    .btn {
+      cursor: pointer;
+      background-color: transparent;
+      transition: all ease 200ms;
+    }
+
+    .btn:hover {
+      transform: scale(1.15);
+      background-color: var(--main-bg);
+      color: var(--gray-main);
+    }
+
     nav {
       position: fixed;
       top: 0;
@@ -99,28 +153,33 @@
         }
       }
     }
-    @keyframes slide{
-      from{
+
+    @keyframes slide {
+      from {
         transform: translateX(0);
       }
-      to{
+
+      to {
         transform: translateX(-100%);
-        }
+      }
     }
+
     main {
       max-width: var(--laptop);
       margin-inline: auto;
       height: 100vh;
-      padding-top: 24px;
+      padding-top: 36px;
       padding-inline: 24px;
+
       p {
         color: var(--main-bg);
       }
-      #slider-p{
+
+      #slider-p {
         overflow: hidden;
         position: relative;
         display: flex;
-        
+
         .slider {
           display: flex;
           white-space: nowrap;
@@ -128,21 +187,23 @@
           animation: slide 20s linear infinite;
         }
       }
-      #slider-p::after{
+
+      #slider-p::after {
         content: '';
         width: 36px;
         height: 100%;
-        background: linear-gradient(to left,rgba(0,0,0,0),var(--gray-main));
+        background: linear-gradient(to left, rgba(0, 0, 0, 0), var(--gray-main));
         position: absolute;
         top: 0;
         left: 0;
       }
-      #slider-p::before{
+
+      #slider-p::before {
         content: '';
         z-index: 2;
         width: 36px;
         height: 100%;
-        background: linear-gradient(to right,rgba(0,0,0,0),var(--gray-main));
+        background: linear-gradient(to right, rgba(0, 0, 0, 0), var(--gray-main));
         position: absolute;
         top: 0;
         right: 0;
@@ -490,12 +551,103 @@
         transform: rotate(-1turn);
       }
     }
+
+    .themeToggle {
+      color: var(--gray-main);
+      width: 3em;
+    }
+
+    .st-sunMoonThemeToggleBtn {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput {
+      opacity: 0;
+      width: 100%;
+      aspect-ratio: 1;
+    }
+
+    .st-sunMoonThemeToggleBtn svg {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.4s ease;
+      transform: rotate(40deg);
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunMoon {
+      transform-origin: center center;
+      transition: inherit;
+      transform: scale(1);
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay {
+      transform-origin: center center;
+      transform: scale(0);
+    }
+
+    .st-sunMoonThemeToggleBtn svg mask>circle {
+      transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
+      transform: translate(0px, 0px);
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay2 {
+      animation-delay: 0.05s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay3 {
+      animation-delay: 0.1s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay4 {
+      animation-delay: 0.17s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay5 {
+      animation-delay: 0.25s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay5 {
+      animation-delay: 0.29s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg {
+      transform: rotate(90deg);
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg mask>circle {
+      transform: translate(16px, -3px);
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg .sunMoon {
+      transform: scale(0.55);
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg .sunRay {
+      animation: showRay1832 0.4s ease 0s 1 forwards;
+    }
+
+    @keyframes showRay1832 {
+      0% {
+        transform: scale(0);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
   </style>
 </head>
 
 <body>
   <div id="loader" class="flex flex-col items-center justify-center" style="gap: 12px;">
-    <div style="font-size: x-large;font-weight: bold;color: #FF9000;">The Movies Hub API</div>
+    <div style="font-size: x-large;font-weight: bold;">
+      <span>The Movies Hub</span>
+      <span style="width: 10px;"></span>
+      <span style="color: #FF9000;">API</span>
+    </div>
     <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
       <div class="wheel"></div>
       <div class="hamster">
@@ -517,7 +669,7 @@
   </div>
   <div id="root" class="hidden">
     <header>
-      <nav class="flex w-full">
+      <nav class="flex w-full items-center" style="justify-content: space-between;z-index: 10;">
         <span class="flex items-center">
           <svg class="logo" mlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 48 48">
             <defs>
@@ -535,14 +687,35 @@
           </svg>
           <span>TMHA</span>
         </span>
+        <div style="transform: scale(2.5);">
+          <label for="themeToggle" class="themeToggle st-sunMoonThemeToggleBtn" type="checkbox">
+            <input type="checkbox" checked="true" id="themeToggle" class="themeToggleInput" />
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" stroke="none">
+              <mask id="moon-mask">
+                <rect x="0" y="0" width="20" height="20" fill="white"></rect>
+                <circle cx="11" cy="3" r="8" fill="black"></circle>
+              </mask>
+              <circle class="sunMoon" cx="10" cy="10" r="8" mask="url(#moon-mask)"></circle>
+              <g>
+                <circle class="sunRay sunRay1" cx="18" cy="10" r="1.5"></circle>
+                <circle class="sunRay sunRay2" cx="14" cy="16.928" r="1.5"></circle>
+                <circle class="sunRay sunRay3" cx="6" cy="16.928" r="1.5"></circle>
+                <circle class="sunRay sunRay4" cx="2" cy="10" r="1.5"></circle>
+                <circle class="sunRay sunRay5" cx="6" cy="3.1718" r="1.5"></circle>
+                <circle class="sunRay sunRay6" cx="14" cy="3.1718" r="1.5"></circle>
+              </g>
+            </svg>
+          </label>
+
+        </div>
       </nav>
     </header>
-    <main class="flex flex-col justify-center" style="gap: 36px;">
-      <div class="flex items-center" style="justify-content: space-between;">
+    <main class="flex flex-col justify-center" style="gap: 28px;">
+      <div class="main_text flex">
         <div>
-          <div class="flex">
+          <div class="flex main_text-title">
             <h1 style="white-space: nowrap;">The Movies Hub </h1>
-            <div style="width: 12px;"></div>
+            <div style="width: 12px;margin-right: 0;"></div>
             <span class="api" style="color: #FF9000;">API</span>
           </div>
           <span>
@@ -550,21 +723,23 @@
             <span>https://apimovies-production-845c.up.railway.app/api/movies</span>
           </span>
         </div>
-        <button style="all: unset;border: 1px solid #FF9000;padding-block: 8px;padding-inline: 12px;">Docs</button>
+        <button class="btn"
+          style="border: 1px solid #FF9000;padding-block: 8px;padding-inline: 12px;font-size: 20px;" disabled>Docs</button>
       </div>
       <div id="slider-p">
         <div id="slider" class="slider"></div>
         <div id="slider2" class="slider"></div>
       </div>
     </main>
-    <footer style="background-color: #FF9000;">
+    <section style="height: 300px;background-color: black;display: none;"></section>
+    <footer style="background-color: black;color: white;display: none;">
       Este es el footer
     </footer>
   </div>
   <script>
     let htmlSlider
     (async () => {
-      const loader= document.getElementById('loader')
+      const loader = document.getElementById('loader')
       const content = document.getElementById('root')
       console.log('empezando a cargar', loader)
       try {
@@ -579,19 +754,27 @@
           const imgSlider = `<img width='230px' height=auto src=${movie.image} alt=${movie.title} style="margin-right: 6px;"/>`
           return imgSlider
         }).join('')
-        slider.innerHTML=htmlSlider;
-        slider2.innerHTML=htmlSlider;
+        slider.innerHTML = htmlSlider;
+        slider2.innerHTML = htmlSlider;
         console.log(data)
         return
       } catch (e) {
         console.error('Error al obtener los datos', e);
         throw e;
       } finally {
-          loader.classList.add('hidden')
-          content.classList.remove('hidden')
+        loader.classList.add('hidden')
+        content.classList.remove('hidden')
       }
     })()
-
+    const toggle = document.getElementById('themeToggle')
+    toggle.addEventListener('change',() => {
+      if(toggle.checked===true){
+        document.documentElement.style.setProperty('color-scheme','light');
+      }
+      if(toggle.checked===false){
+        document.documentElement.style.setProperty('color-scheme','dark');
+      }
+    })
   </script>
 </body>
 
