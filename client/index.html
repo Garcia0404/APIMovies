@@ -726,7 +726,7 @@
         <button class="btn"
           style="border: 1px solid #FF9000;padding-block: 8px;padding-inline: 12px;font-size: 20px;" disabled>Docs</button>
       </div>
-      <div id="slider-p">
+      <div id="slider-p" style="height: 346.837px;">
         <div id="slider" class="slider"></div>
         <div id="slider2" class="slider"></div>
       </div>
@@ -751,7 +751,7 @@
         const slider = document.getElementById('slider')
         const slider2 = document.getElementById('slider2')
         const htmlSlider = data.map(movie => {
-          const imgSlider = `<img width='230px' height=auto src=${movie.image} alt=${movie.title} style="margin-right: 6px;"/>`
+          const imgSlider = `<img width='230px' loading='lazy' onLoad='this.style.opacity = 1;' height=auto src=${movie.image} alt=${movie.title} style="margin-right: 6px;opacity: 0;"/>`
           return imgSlider
         }).join('')
         slider.innerHTML = htmlSlider;
