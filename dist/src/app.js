@@ -12,9 +12,10 @@ export var createApp = function(param) {
             "GET"
         ]
     }));
+    app.use(express.static(process.cwd() + "/dist/client/index.html"));
     app.use(express.json());
     app.get("/", function(req, res) {
-        res.sendFile(process.cwd() + "/client/index.html");
+        res.sendFile(process.cwd() + "/dist/client/index.html");
     });
     app.use("/api/movies", createRouter({
         movieModel: movieModel
