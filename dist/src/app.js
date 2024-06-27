@@ -28,5 +28,3 @@ export var createApp = function(param) {
         console.log("Server listening on port http://localhost:".concat(PORT));
     });
 };
-
-//# sourceMappingURL=app.js.map

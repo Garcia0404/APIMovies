@@ -30,5 +30,3 @@ export var validationMoviePartial = function(object) {
     var result = movieSchema.partial().safeParse(object);
     return result;
 };
-
-//# sourceMappingURL=validationMovie.js.map

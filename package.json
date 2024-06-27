@@ -7,7 +7,7 @@
     "start:sqlite": "node ./dist/src/server-with-sql.js --watch",
     "start": "node server-local.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"swc src -d dist --source-maps"
+    "build":"xcopy client dist\\client /E /I && swc src -d dist"
   },
   "keywords": [
     "api",

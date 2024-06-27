@@ -12,5 +12,3 @@ export var createRouter = function(param) {
     router.patch("/:id", movieController.update);
     return router;
 };
-
-//# sourceMappingURL=apiRoutes.js.map

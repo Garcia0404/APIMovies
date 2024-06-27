@@ -284,5 +284,3 @@ export var MovieController = function MovieController(param) {
     }());
     this.movieModel = movieModel;
 };
-
-//# sourceMappingURL=movies.js.map

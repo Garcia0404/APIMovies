@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgNDggNDgiPjxkZWZzPjxtYXNrIGlkPSJpcFNNb3ZpZTAiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iNCI+PHBhdGggZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMjQgNDRjMTEuMDQ2IDAgMjAtOC45NTQgMjAtMjBTMzUuMDQ2IDQgMjQgNFM0IDEyLjk1NCA0IDI0czguOTU0IDIwIDIwIDIwWiIvPjxwYXRoIGZpbGw9IiMwMDAiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTI0IDE4YTMgMyAwIDEgMCAwLTZhMyAzIDAgMCAwIDAgNlptMCAxOGEzIDMgMCAxIDAgMC02YTMgMyAwIDAgMCAwIDZabS05LTlhMyAzIDAgMSAwIDAtNmEzIDMgMCAwIDAgMCA2Wm0xOCAwYTMgMyAwIDEgMCAwLTZhMyAzIDAgMCAwIDAgNloiLz48cGF0aCBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZD0iTTI0IDQ0aDIwIi8+PC9nPjwvbWFzaz48L2RlZnM+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMCAwaDQ4djQ4SDB6IiBtYXNrPSJ1cmwoI2lwU01vdmllMCkiLz48L3N2Zz4=">
+  <title>The Movies Hub API</title>
+  <style>
+    :root {
+      --main-bg: #FF9000;
+      --gray-main: #121212;
+      --gray-secondary: #202329;
+      --mobile: 350px;
+      --mobileLg: 450px;
+      --tablet: 900px;
+      --laptop: 1100px;
+    }
+    @media (width<350px) {
+      .main_text-title{
+        flex-direction: column;
+      }
+    }
+    @media (width<420px) {
+      .main_text-title{
+        h1,.api{
+            font-size: 32px;
+        }
+      }
+    }
+    @media (width<420px) and (width>=350px){
+      .main_text-title{
+          font-size: 10px;
+        }
+    }
+    @media (width<620px) {
+      .main_text {
+        flex-direction: column;
+        gap: 20px;
+        div {
+          margin-right: auto;
+        }
+
+        .btn {
+          margin-right: auto;
+        }
+      }
+    }
+
+    @media (width>=620px) {
+      main {
+        .main_text {
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+
+    @media (width<=750px) and (width>=420px){
+      h1,.api {
+        font-size: 40px;
+      }
+    }
+
+    @media (width>750px) {
+      h1 {
+        font-size: 52px;
+      }
+
+      main {
+        span {
+          font-size: 20px;
+        }
+
+        .api {
+          font-size: 52px;
+        }
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .h-full {
+      height: 100%;
+    }
+
+    #loader {
+      height: 100vh;
+      width: 100%;
+    }
+
+    .btn {
+      cursor: pointer;
+      background-color: transparent;
+      transition: all ease 200ms;
+    }
+
+    .btn:hover {
+      transform: scale(1.15);
+      background-color: var(--main-bg);
+      color: var(--gray-main);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: var(--main-bg);
+      padding: 8px 24px;
+
+      span {
+        gap: 12px;
+        color: var(--gray-main);
+
+        span {
+          font-size: 28px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    @keyframes slide {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    main {
+      max-width: var(--laptop);
+      margin-inline: auto;
+      height: 100vh;
+      padding-top: 36px;
+      padding-inline: 24px;
+
+      p {
+        color: var(--main-bg);
+      }
+
+      #slider-p {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+
+        .slider {
+          display: flex;
+          white-space: nowrap;
+          gap: 2px;
+          animation: slide 20s linear infinite;
+        }
+      }
+
+      #slider-p::after {
+        content: '';
+        width: 36px;
+        height: 100%;
+        background: linear-gradient(to left, rgba(0, 0, 0, 0), var(--gray-main));
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #slider-p::before {
+        content: '';
+        z-index: 2;
+        width: 36px;
+        height: 100%;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0), var(--gray-main));
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    .wheel-and-hamster {
+      --dur: 1s;
+      position: relative;
+      width: 12em;
+      height: 12em;
+      font-size: 14px;
+    }
+
+    .wheel,
+    .hamster,
+    .hamster div,
+    .spoke {
+      position: absolute;
+    }
+
+    .wheel,
+    .spoke {
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .wheel {
+      background: radial-gradient(100% 100% at center, hsla(0, 0%, 60%, 0) 47.8%, hsl(0, 0%, 60%) 48%);
+      z-index: 2;
+    }
+
+    .hamster {
+      animation: hamster var(--dur) ease-in-out infinite;
+      top: 50%;
+      left: calc(50% - 3.5em);
+      width: 7em;
+      height: 3.75em;
+      transform: rotate(4deg) translate(-0.8em, 1.85em);
+      transform-origin: 50% 0;
+      z-index: 1;
+    }
+
+    .hamster__head {
+      animation: hamsterHead var(--dur) ease-in-out infinite;
+      background: hsl(30, 90%, 55%);
+      border-radius: 70% 30% 0 100% / 40% 25% 25% 60%;
+      box-shadow: 0 -0.25em 0 hsl(30, 90%, 80%) inset,
+        0.75em -1.55em 0 hsl(30, 90%, 90%) inset;
+      top: 0;
+      left: -2em;
+      width: 2.75em;
+      height: 2.5em;
+      transform-origin: 100% 50%;
+    }
+
+    .hamster__ear {
+      animation: hamsterEar var(--dur) ease-in-out infinite;
+      background: hsl(0, 90%, 85%);
+      border-radius: 50%;
+      box-shadow: -0.25em 0 hsl(30, 90%, 55%) inset;
+      top: -0.25em;
+      right: -0.25em;
+      width: 0.75em;
+      height: 0.75em;
+      transform-origin: 50% 75%;
+    }
+
+    .hamster__eye {
+      animation: hamsterEye var(--dur) linear infinite;
+      background-color: hsl(0, 0%, 0%);
+      border-radius: 50%;
+      top: 0.375em;
+      left: 1.25em;
+      width: 0.5em;
+      height: 0.5em;
+    }
+
+    .hamster__nose {
+      background: hsl(0, 90%, 75%);
+      border-radius: 35% 65% 85% 15% / 70% 50% 50% 30%;
+      top: 0.75em;
+      left: 0;
+      width: 0.2em;
+      height: 0.25em;
+    }
+
+    .hamster__body {
+      animation: hamsterBody var(--dur) ease-in-out infinite;
+      background: hsl(30, 90%, 90%);
+      border-radius: 50% 30% 50% 30% / 15% 60% 40% 40%;
+      box-shadow: 0.1em 0.75em 0 hsl(30, 90%, 55%) inset,
+        0.15em -0.5em 0 hsl(30, 90%, 80%) inset;
+      top: 0.25em;
+      left: 2em;
+      width: 4.5em;
+      height: 3em;
+      transform-origin: 17% 50%;
+      transform-style: preserve-3d;
+    }
+
+    .hamster__limb--fr,
+    .hamster__limb--fl {
+      clip-path: polygon(0 0, 100% 0, 70% 80%, 60% 100%, 0% 100%, 40% 80%);
+      top: 2em;
+      left: 0.5em;
+      width: 1em;
+      height: 1.5em;
+      transform-origin: 50% 0;
+    }
+
+    .hamster__limb--fr {
+      animation: hamsterFRLimb var(--dur) linear infinite;
+      background: linear-gradient(hsl(30, 90%, 80%) 80%, hsl(0, 90%, 75%) 80%);
+      transform: rotate(15deg) translateZ(-1px);
+    }
+
+    .hamster__limb--fl {
+      animation: hamsterFLLimb var(--dur) linear infinite;
+      background: linear-gradient(hsl(30, 90%, 90%) 80%, hsl(0, 90%, 85%) 80%);
+      transform: rotate(15deg);
+    }
+
+    .hamster__limb--br,
+    .hamster__limb--bl {
+      border-radius: 0.75em 0.75em 0 0;
+      clip-path: polygon(0 0, 100% 0, 100% 30%, 70% 90%, 70% 100%, 30% 100%, 40% 90%, 0% 30%);
+      top: 1em;
+      left: 2.8em;
+      width: 1.5em;
+      height: 2.5em;
+      transform-origin: 50% 30%;
+    }
+
+    .hamster__limb--br {
+      animation: hamsterBRLimb var(--dur) linear infinite;
+      background: linear-gradient(hsl(30, 90%, 80%) 90%, hsl(0, 90%, 75%) 90%);
+      transform: rotate(-25deg) translateZ(-1px);
+    }
+
+    .hamster__limb--bl {
+      animation: hamsterBLLimb var(--dur) linear infinite;
+      background: linear-gradient(hsl(30, 90%, 90%) 90%, hsl(0, 90%, 85%) 90%);
+      transform: rotate(-25deg);
+    }
+
+    .hamster__tail {
+      animation: hamsterTail var(--dur) linear infinite;
+      background: hsl(0, 90%, 85%);
+      border-radius: 0.25em 50% 50% 0.25em;
+      box-shadow: 0 -0.2em 0 hsl(0, 90%, 75%) inset;
+      top: 1.5em;
+      right: -0.5em;
+      width: 1em;
+      height: 0.5em;
+      transform: rotate(30deg) translateZ(-1px);
+      transform-origin: 0.25em 0.25em;
+    }
+
+    .spoke {
+      animation: spoke var(--dur) linear infinite;
+      background: radial-gradient(100% 100% at center, hsl(0, 0%, 60%) 4.8%, hsla(0, 0%, 60%, 0) 5%),
+        linear-gradient(hsla(0, 0%, 55%, 0) 46.9%, hsl(0, 0%, 65%) 47% 52.9%, hsla(0, 0%, 65%, 0) 53%) 50% 50% / 99% 99% no-repeat;
+    }
+
+    /* Animations */
+    @keyframes hamster {
+
+      from,
+      to {
+        transform: rotate(4deg) translate(-0.8em, 1.85em);
+      }
+
+      50% {
+        transform: rotate(0) translate(-0.8em, 1.85em);
+      }
+    }
+
+    @keyframes hamsterHead {
+
+      from,
+      25%,
+      50%,
+      75%,
+      to {
+        transform: rotate(0);
+      }
+
+      12.5%,
+      37.5%,
+      62.5%,
+      87.5% {
+        transform: rotate(8deg);
+      }
+    }
+
+    @keyframes hamsterEye {
+
+      from,
+      90%,
+      to {
+        transform: scaleY(1);
+      }
+
+      95% {
+        transform: scaleY(0);
+      }
+    }
+
+    @keyframes hamsterEar {
+
+      from,
+      25%,
+      50%,
+      75%,
+      to {
+        transform: rotate(0);
+      }
+
+      12.5%,
+      37.5%,
+      62.5%,
+      87.5% {
+        transform: rotate(12deg);
+      }
+    }
+
+    @keyframes hamsterBody {
+
+      from,
+      25%,
+      50%,
+      75%,
+      to {
+        transform: rotate(0);
+      }
+
+      12.5%,
+      37.5%,
+      62.5%,
+      87.5% {
+        transform: rotate(-2deg);
+      }
+    }
+
+    @keyframes hamsterFRLimb {
+
+      from,
+      25%,
+      50%,
+      75%,
+      to {
+        transform: rotate(50deg) translateZ(-1px);
+      }
+
+      12.5%,
+      37.5%,
+      62.5%,
+      87.5% {
+        transform: rotate(-30deg) translateZ(-1px);
+      }
+    }
+
+    @keyframes hamsterFLLimb {
+
+      from,
+      25%,
+      50%,
+      75%,
+      to {
+        transform: rotate(-30deg);
+      }
+
+      12.5%,
+      37.5%,
+      62.5%,
+      87.5% {
+        transform: rotate(50deg);
+      }
+    }
+
+    @keyframes hamsterBRLimb {
+
+      from,
+      25%,
+      50%,
+      75%,
+      to {
+        transform: rotate(-60deg) translateZ(-1px);
+      }
+
+      12.5%,
+      37.5%,
+      62.5%,
+      87.5% {
+        transform: rotate(20deg) translateZ(-1px);
+      }
+    }
+
+    @keyframes hamsterBLLimb {
+
+      from,
+      25%,
+      50%,
+      75%,
+      to {
+        transform: rotate(20deg);
+      }
+
+      12.5%,
+      37.5%,
+      62.5%,
+      87.5% {
+        transform: rotate(-60deg);
+      }
+    }
+
+    @keyframes hamsterTail {
+
+      from,
+      25%,
+      50%,
+      75%,
+      to {
+        transform: rotate(30deg) translateZ(-1px);
+      }
+
+      12.5%,
+      37.5%,
+      62.5%,
+      87.5% {
+        transform: rotate(10deg) translateZ(-1px);
+      }
+    }
+
+    @keyframes spoke {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(-1turn);
+      }
+    }
+
+    .themeToggle {
+      color: var(--gray-main);
+      width: 3em;
+    }
+
+    .st-sunMoonThemeToggleBtn {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput {
+      opacity: 0;
+      width: 100%;
+      aspect-ratio: 1;
+    }
+
+    .st-sunMoonThemeToggleBtn svg {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.4s ease;
+      transform: rotate(40deg);
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunMoon {
+      transform-origin: center center;
+      transition: inherit;
+      transform: scale(1);
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay {
+      transform-origin: center center;
+      transform: scale(0);
+    }
+
+    .st-sunMoonThemeToggleBtn svg mask>circle {
+      transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
+      transform: translate(0px, 0px);
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay2 {
+      animation-delay: 0.05s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay3 {
+      animation-delay: 0.1s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay4 {
+      animation-delay: 0.17s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay5 {
+      animation-delay: 0.25s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn svg .sunRay5 {
+      animation-delay: 0.29s !important;
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg {
+      transform: rotate(90deg);
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg mask>circle {
+      transform: translate(16px, -3px);
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg .sunMoon {
+      transform: scale(0.55);
+    }
+
+    .st-sunMoonThemeToggleBtn .themeToggleInput:checked+svg .sunRay {
+      animation: showRay1832 0.4s ease 0s 1 forwards;
+    }
+
+    @keyframes showRay1832 {
+      0% {
+        transform: scale(0);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loader" class="flex flex-col items-center justify-center" style="gap: 12px;">
+    <div style="font-size: x-large;font-weight: bold;">
+      <span>The Movies Hub</span>
+      <span style="width: 10px;"></span>
+      <span style="color: #FF9000;">API</span>
+    </div>
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+      <div class="wheel"></div>
+      <div class="hamster">
+        <div class="hamster__body">
+          <div class="hamster__head">
+            <div class="hamster__ear"></div>
+            <div class="hamster__eye"></div>
+            <div class="hamster__nose"></div>
+          </div>
+          <div class="hamster__limb hamster__limb--fr"></div>
+          <div class="hamster__limb hamster__limb--fl"></div>
+          <div class="hamster__limb hamster__limb--br"></div>
+          <div class="hamster__limb hamster__limb--bl"></div>
+          <div class="hamster__tail"></div>
+        </div>
+      </div>
+      <div class="spoke"></div>
+    </div>
+  </div>
+  <div id="root" class="hidden">
+    <header>
+      <nav class="flex w-full items-center" style="justify-content: space-between;z-index: 10;">
+        <span class="flex items-center">
+          <svg class="logo" mlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 48 48">
+            <defs>
+              <mask id="ipSMovie0">
+                <g fill="none" stroke-width="4">
+                  <path fill="#fff" stroke="#fff" stroke-linejoin="round"
+                    d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z" />
+                  <path fill="#000" stroke="#000" stroke-linejoin="round"
+                    d="M24 18a3 3 0 1 0 0-6a3 3 0 0 0 0 6Zm0 18a3 3 0 1 0 0-6a3 3 0 0 0 0 6Zm-9-9a3 3 0 1 0 0-6a3 3 0 0 0 0 6Zm18 0a3 3 0 1 0 0-6a3 3 0 0 0 0 6Z" />
+                  <path stroke="#fff" stroke-linecap="round" d="M24 44h20" />
+                </g>
+              </mask>
+            </defs>
+            <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSMovie0)" />
+          </svg>
+          <span>TMHA</span>
+        </span>
+        <div style="transform: scale(2.5);">
+          <label for="themeToggle" class="themeToggle st-sunMoonThemeToggleBtn" type="checkbox">
+            <input type="checkbox" checked="true" id="themeToggle" class="themeToggleInput" />
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" stroke="none">
+              <mask id="moon-mask">
+                <rect x="0" y="0" width="20" height="20" fill="white"></rect>
+                <circle cx="11" cy="3" r="8" fill="black"></circle>
+              </mask>
+              <circle class="sunMoon" cx="10" cy="10" r="8" mask="url(#moon-mask)"></circle>
+              <g>
+                <circle class="sunRay sunRay1" cx="18" cy="10" r="1.5"></circle>
+                <circle class="sunRay sunRay2" cx="14" cy="16.928" r="1.5"></circle>
+                <circle class="sunRay sunRay3" cx="6" cy="16.928" r="1.5"></circle>
+                <circle class="sunRay sunRay4" cx="2" cy="10" r="1.5"></circle>
+                <circle class="sunRay sunRay5" cx="6" cy="3.1718" r="1.5"></circle>
+                <circle class="sunRay sunRay6" cx="14" cy="3.1718" r="1.5"></circle>
+              </g>
+            </svg>
+          </label>
+
+        </div>
+      </nav>
+    </header>
+    <main class="flex flex-col justify-center" style="gap: 28px;">
+      <div class="main_text flex">
+        <div>
+          <div class="flex main_text-title">
+            <h1 style="white-space: nowrap;">The Movies Hub </h1>
+            <div style="width: 12px;margin-right: 0;"></div>
+            <span class="api" style="color: #FF9000;">API</span>
+          </div>
+          <span>
+            <span style="color: #FF9000;">[GET]</span>
+            <span>https://apimovies-production-845c.up.railway.app/api/movies</span>
+          </span>
+        </div>
+        <button class="btn"
+          style="border: 1px solid #FF9000;padding-block: 8px;padding-inline: 12px;font-size: 20px;" disabled>Docs</button>
+      </div>
+      <div id="slider-p" style="height: 346.837px;">
+        <div id="slider" class="slider"></div>
+        <div id="slider2" class="slider"></div>
+      </div>
+    </main>
+    <section style="height: 300px;background-color: black;display: none;"></section>
+    <footer style="background-color: black;color: white;display: none;">
+      Este es el footer
+    </footer>
+  </div>
+  <script>
+    let htmlSlider
+    (async () => {
+      const loader = document.getElementById('loader')
+      const content = document.getElementById('root')
+      console.log('empezando a cargar', loader)
+      try {
+        const response = await fetch('https://apimovies-production-845c.up.railway.app/api/movies')
+        if (!response.ok) {
+          throw new Error('Error al obtener los datos')
+        }
+        const data = await response.json()
+        const slider = document.getElementById('slider')
+        const slider2 = document.getElementById('slider2')
+        const htmlSlider = data.map(movie => {
+          const imgSlider = `<img width='230px' loading='lazy' onLoad='this.style.opacity = 1;' height=auto src=${movie.image} alt=${movie.title} style="margin-right: 6px;opacity: 0;"/>`
+          return imgSlider
+        }).join('')
+        slider.innerHTML = htmlSlider;
+        slider2.innerHTML = htmlSlider;
+        console.log(data)
+        return
+      } catch (e) {
+        console.error('Error al obtener los datos', e);
+        throw e;
+      } finally {
+        loader.classList.add('hidden')
+        content.classList.remove('hidden')
+      }
+    })()
+    const toggle = document.getElementById('themeToggle')
+    toggle.addEventListener('change',() => {
+      if(toggle.checked===true){
+        document.documentElement.style.setProperty('color-scheme','light');
+      }
+      if(toggle.checked===false){
+        document.documentElement.style.setProperty('color-scheme','dark');
+      }
+    })
+  </script>
+</body>
+
+</html>

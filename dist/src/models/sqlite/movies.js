@@ -449,5 +449,3 @@ _define_property(MovieModel, "update", function() {
         return _ref.apply(this, arguments);
     };
 }());
-
-//# sourceMappingURL=movies.js.map
