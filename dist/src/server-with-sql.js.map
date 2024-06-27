@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/server-with-sql.js"],"sourcesContent":["import { createApp } from \"./app.js\";\r\nimport { MovieModel } from \"./models/sqlite/movies.js\";\r\ncreateApp({movieModel:MovieModel})"],"names":["createApp","MovieModel","movieModel"],"mappings":"AAAA,SAASA,SAAS,QAAQ,WAAW;AACrC,SAASC,UAAU,QAAQ,4BAA4B;AACvDD,UAAU;IAACE,YAAWD;AAAU"}

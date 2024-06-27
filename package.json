@@ -4,9 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start:sqlite": "node server-with-sql.js --watch",
-    "start":"node server-local.js --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:sqlite": "node ./dist/src/server-with-sql.js --watch",
+    "start": "node server-local.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"swc src -d dist --source-maps"
   },
   "keywords": [
     "api",
@@ -22,5 +23,9 @@
     "dotenv": "16.4.5",
     "express": "4.19.2",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.3.14",
+    "@swc/core": "^1.6.5"
   }
 }
